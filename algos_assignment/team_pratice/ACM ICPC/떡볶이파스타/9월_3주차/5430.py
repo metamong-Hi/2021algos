@@ -1,33 +1,33 @@
 import sys
-T = int(sys.stdin.readline().strip())
-for _ in range(T):
-    p = sys.stdin.readline().strip()
-    n = int(sys.stdin.readline().strip())
-    x = sys.stdin.readline().strip()[1:-1]
-    if x:
-        x = x.split(',')
+n=int(sys.stdin.readline().strip())
+for _ in range(n):
+    rd=sys.stdin.readline().strip()
+    change=int(sys.stdin.readline().strip())
+    li=sys.stdin.readline().strip()[1:-1]
+    if li:
+        li=li.split(',')
     else:
-        x = []
-
-    reverse = False
-    error = False
-    for single_p in p:
-        if single_p == 'R':
-            reverse = not reverse
-        elif single_p == 'D':
-            if len(x) == 0:
-                error = True
+        li=[]
+    reverse=False
+    error=False
+    for order in rd:
+        if order=='R':
+            reverse=not reverse
+        elif order=='D':
+            if len(li)==0:
+                error=True
                 break
             elif reverse:
-                x.pop()
+                li.pop()
             else:
-                x.pop(0)
+                li.pop(0)
     if error:
         print('error')
     else:
         if reverse:
-            ret = ','.join(x[::-1])
-            print(f'[{ret}]')
-        else:
-            ret = ','.join(x)
-            print(f'[{ret}]')
+            li.reverse()
+        ret=','.join(li)
+        print(f'[{ret}]')
+
+            
+
